@@ -1,6 +1,6 @@
-import { LoginForm } from '@/features/login/Form'
+import { SignUpForm } from '@/features/sign-up/Form'
 
-export default function Login() {
+export default function SignUp() {
     return (
         <div
             style={{
@@ -11,7 +11,7 @@ export default function Login() {
                 width: '100%',
             }}
         >
-            <LoginForm />
+            <SignUpForm />
         </div>
     )
 }
