@@ -113,6 +113,8 @@ export const Filters = (props: {
                         name='minValue'
                         value={filters.minValue}
                         type='number'
+                        min={0}
+                        step={0.01}
                         onInput={(e) => handleInput(e.target as HTMLInputElement)}
                     />
                 </FilterLabel>
@@ -132,6 +134,8 @@ export const Filters = (props: {
                     <FilterInput
                         name='maxValue'
                         value={filters.maxValue}
+                        min={filters.minValue}
+                        step={0.01}
                         type='number'
                         onInput={(e) => handleInput(e.target as HTMLInputElement)}
                     />

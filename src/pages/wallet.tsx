@@ -13,7 +13,7 @@ const MainContainer = styled.div`
     padding-top: 3em;
 `
 
-const AddEntryButton = styled.button`
+const AddEntry = styled.a`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +27,7 @@ const AddEntryButton = styled.button`
     height: 75px;
 
     cursor: pointer;
-
+    text-decoration: none;
     font-size: 32px;
 `
 
@@ -50,7 +50,7 @@ export default function Wallet() {
             <h1>Histórico de Gastos</h1>
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '85%' }}>
                 <Total entries={entries} />
-                <AddEntryButton>Adicionar Despesa</AddEntryButton>
+                <AddEntry href='/wallet/add-transaction'>Adicionar Despesa</AddEntry>
             </div>
             <Filters entries={entries} setFilteredEntries={setFilteredEntries} />
             <TransactionTable entries={entries} />
