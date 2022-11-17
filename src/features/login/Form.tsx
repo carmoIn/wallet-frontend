@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { login } from '@/store/user';
 
 const InfoBox = styled.div`
     visibility: visible;
@@ -80,6 +82,8 @@ const Anchors = styled.div`
 
 export const LoginForm = () => {
     const [credentials, setCredentials] = useState({ email: '', password: '' })
+    const currentUser = useAppSelector((state) => state.user.currentUser)
+    const dispatch = useAppDispatch()
     const router = useRouter()
 
     const handleInput = (target: HTMLInputElement) => {
@@ -90,8 +94,14 @@ export const LoginForm = () => {
 
     const handleLogin = (e: FormEvent) => {
         e.preventDefault()
-        router.push('/wallet')
+        dispatch(login(credentials))
     }
+
+    useEffect(() => {
+        if (currentUser) {
+            router.push('/wallet')
+        }
+    }, [currentUser])
 
     return (
         <FormContainer onSubmit={(e) => handleLogin(e)}>
