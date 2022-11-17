@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import { FormEvent, useState } from 'react'
 import styled from 'styled-components'
+import { useAppDispatch } from '@/store/hooks';
+import { register } from '@/store/user';
 
 const FormContainer = styled.form`
     display: flex;
@@ -77,6 +79,7 @@ const Anchors = styled.div`
 
 export const SignUpForm = () => {
     const [credentials, setCredentials] = useState({ name: '', email: '', password: '' })
+    const dispatch = useAppDispatch()
     const router = useRouter()
 
     const handleInput = (target: HTMLInputElement) => {
@@ -87,6 +90,7 @@ export const SignUpForm = () => {
 
     const handleRegister = (e: FormEvent) => {
         e.preventDefault()
+        dispatch(register(credentials))
         router.push('/')
     }
 
