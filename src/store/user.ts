@@ -16,17 +16,25 @@ const initialState: UserState = {
     currentUser: null
 }
 
+const getUserByEmail = (email: string, users: User[]): User | null => {
+    const user = users.filter((user) => user.email === email)
+    return user.length === 0 ? null : user[0]
+}
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
         register: (state, action: PayloadAction<User>) => {
-            state.users.push(action.payload)
+            const isEmailAvailable = !getUserByEmail(action.payload.email, state.users)
+            if (isEmailAvailable) {
+                state.users.push(action.payload)
+            }
         },
 
         login: (state, action: PayloadAction<Omit<User, 'name'>>) => {
-            const user = state.users.filter((user) => user.email === action.payload.email)[0]
-            state.currentUser = user.password === action.payload.password ? user : null
+            const user = getUserByEmail(action.payload.email, state.users)
+            state.currentUser = user?.password === action.payload.password ? user : null
         },
 
         logout: (state) => { state.currentUser = null }
