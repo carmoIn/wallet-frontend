@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import { FormEvent, useState } from 'react'
 import styled from 'styled-components'
+import { useAppDispatch } from '@/store/hooks';
+import { createEntry } from '@/store/entry';
 
 const FormContainer = styled.form`
     display: flex;
@@ -75,7 +77,8 @@ const Anchors = styled.div`
 `
 
 export const AddTransactionForm = () => {
-    const [data, setData] = useState({ value: 5, method: '', category: '', description: '' })
+    const [data, setData] = useState({ value: 5, currency: '', method: '', category: '', description: '' })
+    const dispatch = useAppDispatch()
     const router = useRouter()
 
     const handleInput = (target: HTMLInputElement) => {
@@ -86,6 +89,7 @@ export const AddTransactionForm = () => {
 
     const handleRegister = (e: FormEvent) => {
         e.preventDefault()
+        dispatch(createEntry(data))
         router.push('/wallet')
     }
 
