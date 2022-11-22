@@ -1,14 +1,6 @@
-import { useState } from 'react'
+import { Entry } from '@/store/entry'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-
-interface Entry {
-    id: number
-    category: string
-    value: number
-    description: string
-    method: string
-    date: Date
-}
 
 const MainContainer = styled.div`
     display: flex;
@@ -82,6 +74,10 @@ export const Filters = (props: {
         const value = target.value
         setFilters({ ...filters, [name]: value })
     }
+
+    useEffect(() => {
+        props.setFilteredEntries(props.entries)
+    }, [filters])
 
     return (
         <MainContainer>

@@ -1,6 +1,7 @@
 import { Filters } from '@/features/wallet/filters'
 import { TransactionTable } from '@/features/wallet/table'
 import { Total } from '@/features/wallet/total'
+import { useAppSelector } from '@/store/hooks'
 import { useState } from 'react'
 import styled from 'styled-components'
 
@@ -32,17 +33,7 @@ const AddEntry = styled.a`
 `
 
 export default function Wallet() {
-    const entries = [
-        {
-            id: 0,
-            category: 'Entretenimento',
-            value: 10.23,
-            description: 'Cinema',
-            method: 'PIX',
-            date: new Date(),
-        },
-    ]
-
+    const entries = useAppSelector((state) => state.entry.entries)
     const [filteredEntries, setFilteredEntries] = useState(entries)
 
     return (

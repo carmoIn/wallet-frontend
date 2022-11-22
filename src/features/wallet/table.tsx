@@ -1,13 +1,5 @@
+import { Entry } from '@/store/entry'
 import styled from 'styled-components'
-
-interface Entry {
-    id: number
-    category: string
-    value: number
-    description: string
-    method: string
-    date: Date
-}
 
 const MainContainer = styled.div`
     display: grid;
@@ -31,6 +23,7 @@ const Item = styled.div`
 `
 
 export const TransactionTable = (props: { entries: Entry[] }) => {
+    // TODO add delete / edit buttons
     return (
         <MainContainer>
             <Item>Categoria</Item>

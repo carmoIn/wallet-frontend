@@ -1,3 +1,4 @@
+import { Entry } from '@/store/entry'
 import styled from 'styled-components'
 
 const TotalInfo = styled.div`
@@ -15,10 +16,6 @@ const TotalInfo = styled.div`
 
     font-size: 32px;
 `
-
-interface Entry {
-    value: number
-}
 
 export const Total = (props: { entries: Entry[] }) => {
     const getTotal = () => {
