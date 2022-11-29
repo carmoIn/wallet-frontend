@@ -10,4 +10,4 @@ yarn run dev
 ```
 
 Para ver o test coverage e preciso rodar os testes primeiro,
-depois disso simplesmente abra a pagina /coverage/lcov-report/index.html em seu navegador preferido.
+após isso basta acessar  em seu navegador preferido o documento /coverage/lcov-report/index.html que foi gerado no diretório do projeto.
