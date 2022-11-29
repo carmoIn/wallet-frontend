@@ -1,12 +1,67 @@
 /// <reference types="cypress" />
 
-describe('example to-do app', () => {
+function userFlow() {
+    // register user
+    cy.visit('/sign-up')
+
+    cy.get('input[name="name"]').type('John Tester')
+    cy.get('input[name="email"]').type('test@email.com')
+    cy.get('input[name="password"]').type('hunter2')
+
+    cy.get('input[name="sign-up"]').click()
+
+    cy.url().should('not.include', 'sign-up')
+
+    // login user
+    cy.get('input[name="email"]').type('test@email.com')
+    cy.get('input[name="password"]').type('hunter2')
+
+    cy.get('input[name="login"]').click()
+
+    cy.url().should('include', 'wallet')
+}
+
+describe('Wallet App', () => {
     beforeEach(() => {
         cy.visit('/')
     })
 
-    it('can login', () => {
+    it('should deny login if user does not exist', () => {
         cy.get('form').should('contain.text', 'Email')
+
+        cy.get('input[name="email"]').type('test@email.com')
+        cy.get('input[name="password"]').type('hunter2')
+
+        cy.get('input[name="login"]').click()
+
+        cy.url().should('not.include', 'wallet')
+    })
+
+    it('should be able to complete a new user flow', () => {
+        userFlow()
+    })
+
+    it('should be able to register a new transaction', () => {
+        userFlow()
+
+        cy.get('a').click()
+
+        cy.url().should('include', 'add-transaction')
+
+        cy.get('input[name="value"]').type('{backspace}10')
+        cy.get('input[name="method"]').type('PIX')
+        cy.get('input[name="category"]').type('Testing')
+        cy.get('input[name="description"]').type(
+            'This is a test transaction automated through cypress!',
+        )
+
+        cy.get('input[name="add-transaction"]').click()
+
+        cy.url().should('include', 'wallet')
+        cy.url().should('not.include', 'add-transaction')
+
+        cy.get('#transactionTable').should('contain.text', 'PIX')
+        cy.get('#transactionTable').should('not.contain.text', 'Aleatorio!')
     })
 
     /*
