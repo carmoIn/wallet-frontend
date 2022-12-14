@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { FormEvent, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { login } from '@/store/user'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { login } from '../../store/user'
 
 const InfoBox = styled.div`
     visibility: visible;

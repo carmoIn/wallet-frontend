@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { FormEvent, useState } from 'react'
 import styled from 'styled-components'
-import { useAppDispatch } from '@/store/hooks'
-import { createEntry } from '@/store/entry'
+import { useAppDispatch } from '../../store/hooks'
+import { createEntry } from '../../store/entry'
 
 const FormContainer = styled.form`
     display: flex;
