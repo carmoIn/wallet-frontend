@@ -12,6 +12,8 @@ Serão tratados neste documento uma visão geral da arquitetura do sistema desen
 
 ### 3. Visão Geral
 
+![Visão Geral](https://github.com/carmoIn/wallet-frontend/raw/feat-docs/docs/architeture.png)
+
 ### 4. Mecanismos arquiteturiais
 
 | MECANISMO DE ANÁLISE | MECANISMO DE DESIGN | MECANISMO DE IMPLEMENTAÇÃO |
@@ -22,3 +24,5 @@ Serão tratados neste documento uma visão geral da arquitetura do sistema desen
 | Deploy | Configuração do ambiente para deploy | Visual studio Code, docker |
 
 ### 5. Visão de caso de uso (Como demonstrado no conteúdo da Blackboard)
+
+![Casos de Uso](https://github.com/carmoIn/wallet-frontend/raw/feat-docs/docs/user-case.png)
