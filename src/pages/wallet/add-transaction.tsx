@@ -1,4 +1,4 @@
-import { AddTransactionForm } from '@/features/wallet/add-transaction-form'
+import { AddTransactionForm } from '../../features/wallet/add-transaction-form'
 
 export default function SignUp() {
     return (

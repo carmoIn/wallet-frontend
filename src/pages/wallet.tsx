@@ -1,7 +1,7 @@
-import { Filters } from '@/features/wallet/filters'
-import { TransactionTable } from '@/features/wallet/table'
-import { Total } from '@/features/wallet/total'
-import { useAppSelector } from '@/store/hooks'
+import { Filters } from '../features/wallet/filters'
+import { TransactionTable } from '../features/wallet/table'
+import { Total } from '../features/wallet/total'
+import { useAppSelector } from '../store/hooks'
 import { useState } from 'react'
 import styled from 'styled-components'
 
